@@ -9,7 +9,7 @@
       justify-content="center"
     >
       <CHeading text-align="center" mb="4">
-        ⚡️ Hello chakra-ui/vue
+        ⚡️ Hello tomatoes
       </CHeading>
       <CFlex justify="center" direction="column" align="center">
         <CBox mb="3">
@@ -29,32 +29,9 @@
             Show Toast
           </CButton>
         </CBox>
-        <CAvatarGroup>
-          <CAvatar
-            name="Evan You"
-            alt="Evan You"
-            src="https://pbs.twimg.com/profile_images/1206997998900850688/cTXTQiHm_400x400.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar
-            name="Jonathan Bakebwa"
-            alt="Jonathan Bakebwa"
-            src="https://res.cloudinary.com/xtellar/image/upload/v1572857445/me_zqos4e.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar
-            name="Segun Adebayo"
-            alt="Segun Adebayo"
-            src="https://pbs.twimg.com/profile_images/1169353373012897802/skPUWd6e_400x400.jpg"
-          >
-            <CAvatarBadge size="1.0em" bg="green.500" />
-          </CAvatar>
-          <CAvatar src="pop">
-            <CAvatarBadge size="1.0em" border-color="papayawhip" bg="tomato" />
-          </CAvatar>
-        </CAvatarGroup>
+        <CBox mb=6>
+          
+        </CBox>
         <CButton
           left-icon="close"
           variant-color="red"
@@ -106,6 +83,7 @@ import {
   CFlex,
   CHeading
 } from '@chakra-ui/vue'
+import {getRecipes} from '~/services/recipe-api.service'
 
 export default {
   name: 'App',
@@ -129,6 +107,7 @@ export default {
   inject: ['$chakraColorMode', '$toggleColorMode'],
   data () {
     return {
+      recipes: [],
       showModal: false,
       mainStyles: {
         dark: {
@@ -141,6 +120,9 @@ export default {
         }
       }
     }
+  },
+  async created() {
+    getRecipes().then(v => this.recipes = v);
   },
   computed: {
     colorMode ()  {
