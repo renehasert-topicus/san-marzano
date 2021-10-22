@@ -16,8 +16,7 @@ export default defineComponent({
     }
   },
   async created() {
-    const recipes = await getRecipes('tomatoes', 5);
-    if (recipes) this.recipes = recipes;
+    this.recipes = await getRecipes('tomatoes', 5);
   },
 })
 </script>

@@ -46,10 +46,13 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    extend: function (config, {isDev, isClient}) {
-        config.node = {
-            fs: "empty"
-        };
+    extend: function (config, { isDev, isClient }) {
+      config.node = {
+        fs: "empty"
+      };
     }
-}
+  },
+  env: {
+    recipeApiKey: process.env.RECIPE_API_KEY
+  }
 }
